@@ -8,42 +8,44 @@ function ToDo() {
   const [doTasks, setDoTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
 
-  const [draggedTask, setDraggedTask] = useState(null);
+  // const [draggedTask, setDraggedTask] = useState(null);
   const [task, setTask] = useState('');
   const [date, setDate] = useState('');
+  const [power,setPower] = useState('');
 
   const handleTaskDragStart = (e, listType, taskIndex) => {
-    setDraggedTask({ listType, taskIndex });
+    e.dataTransfer.setData('text/plain', JSON.stringify({ listType, taskIndex }));
   };
 
-  const handleTaskDragEnd = () => {
-    setDraggedTask(null);
-  };
 
-  const handleTaskDrop = (e, listType) => {
+
+  const handleTaskDrop = (e, targetList) => {
     e.preventDefault();
-    if (draggedTask) {
-      const { listType: sourceListType, taskIndex } = draggedTask;
-      if (listType !== sourceListType) {
-        if (listType === 'do') {
-          const taskToMove = doTasks[taskIndex];
-          setDoTasks((prevTasks) => {
-            prevTasks.splice(taskIndex, 1);
-            return prevTasks;
-          });
-          setDoneTasks((prevTasks) => [...prevTasks, taskToMove]);
-        } else if (listType === 'done') {
-          const taskToMove = doneTasks[taskIndex];
-          setDoneTasks((prevTasks) => {
-            prevTasks.splice(taskIndex, 1);
-            return prevTasks;
-          });
-          setDoTasks((prevTasks) => [...prevTasks, taskToMove]);
-        }
+    const data = e.dataTransfer.getData('text/plain');
+    const { listType, taskIndex } = JSON.parse(data);
+
+    if (listType !== targetList) {
+      if (listType === 'do') {
+        const taskToMove = doTasks[taskIndex];
+        setDoTasks((prevTasks) => {
+          const newTasks = [...prevTasks];
+          newTasks.splice(taskIndex, 1);
+          return newTasks;
+        });
+        setDoneTasks((prevTasks) => [...prevTasks, taskToMove]);
+      } else if (listType === 'done') {
+        const taskToMove = doneTasks[taskIndex];
+        setDoneTasks((prevTasks) => {
+          const newTasks = [...prevTasks];
+          newTasks.splice(taskIndex, 1);
+          return newTasks;
+        });
+        setDoTasks((prevTasks) => [...prevTasks, taskToMove]);
       }
-      setDraggedTask(null);
     }
+
   };
+
 
   const currentDate = new Date();
   currentDate.setUTCHours(0, 0, 0, 0);
@@ -58,7 +60,7 @@ function ToDo() {
       return;
     }
     if (task.trim() === '' || date.trim() === '') return;
-    setDoTasks([...doTasks, { task, date }]);
+    setDoTasks([...doTasks, { task, date, power }]);
     setTask('');
     setDate('');
   };
@@ -82,18 +84,18 @@ function ToDo() {
         date={date}
         setDate={setDate}
         setTask={setTask} 
+        power={power}
+        setPower={setPower}
         />
 
       <DoList doTasks={doTasks}
         removeTodo={removeTodo}
         onTaskDragStart={handleTaskDragStart}
-        onTaskDragEnd={handleTaskDragEnd}
         onTaskDrop={handleTaskDrop}
       />
 
       <DoneList doneTasks={doneTasks}
         onTaskDragStart={handleTaskDragStart}
-        onTaskDragEnd={handleTaskDragEnd}
         onTaskDrop={handleTaskDrop}
         removeTodo={removeTodo} />
 

@@ -8,7 +8,7 @@ const DoList = ({doTasks,removeTodo,onTaskDragStart, onTaskDragEnd, onTaskDrop})
           onDragStart={(e) => onTaskDragStart(e, 'do', index)}
           onDragEnd={onTaskDragEnd}
           >
-            {todo.task} (Due: {todo.date}){" "}
+            {todo && todo.task} (Due: {todo && todo.date}){todo.power}
             <button onClick={() => removeTodo(index,true)}>Remove</button>
           </li>
         ))}
