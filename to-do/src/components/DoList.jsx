@@ -1,18 +1,47 @@
-import React from "react";
-const DoList = ({doTasks,removeTodo,onTaskDragStart, onTaskDragEnd, onTaskDrop})=>{
-    return(
-        <ul  onDrop={(e) => onTaskDrop(e, 'do')} onDragOver={(e) => e.preventDefault()}>
-        {doTasks.map((todo, index) => (
-          <li key={index} 
-          draggable
-          onDragStart={(e) => onTaskDragStart(e, 'do', index)}
-          onDragEnd={onTaskDragEnd}
-          >
-            {todo && todo.task} (Due: {todo && todo.date}){todo.power}
-            <button onClick={() => removeTodo(index,true)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+import React,{useState} from "react";
+import RenderList from "./RenderList";
+
+
+const DoList = ({ doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop }) => {
+    // const[filterDate,setFilterDate]=useState([]);
+    // const[sortList,setSortList] = useState("");
+
+    // const filterlist=(filterOption)=>{
+    //     let bufList =[];
+    //     if(!filterOption)return;
+    //     bufList = doTasks.filter((a)=>{
+    //         return a === filterOption
+    //     })
+    //     setFilterDate(bufList)
+    // }
+
+
+
+   return (
+        <div>
+            <p>filter by date</p>
+            <input
+                className="date-input"
+                type="date"
+                value={filterDate}
+                onChange={(e) => filterlist(e.target.value)}
+            />
+            <p>sort</p>
+            <select value={sortList} onChange={(e) => setSortList(e.target.value)} >
+                <option value="">Select sort</option>
+                <option value="dateSort">Date</option>
+                <option value="importanceSort"> Importance</option>
+
+            </select>
+            <RenderList
+                taskList={filterDate}
+                doOrDone='do'
+                removeTodo={removeTodo}
+                onTaskDragEnd={onTaskDragEnd}
+                onTaskDragStart={onTaskDragStart}
+                onTaskDrop={onTaskDrop}
+            />
+        </div>
     )
 }
 export default DoList;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import './style/InputComponent.css'
 const InputComponent = ({ task, setTask, date, setDate, addTodo,power,setPower}) => {
 
     return (
@@ -12,6 +12,7 @@ const InputComponent = ({ task, setTask, date, setDate, addTodo,power,setPower})
                 onChange={(e) => setTask(e.target.value)}
             />
             <input
+                className="date-input"
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
