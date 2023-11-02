@@ -44,8 +44,11 @@ function ToDo() {
         setDoTasks((prevTasks) => [...prevTasks, taskToMove]);
       }
     }
+  }
 
-  };
+ 
+
+  
 
 
   const currentDate = new Date();
@@ -79,7 +82,7 @@ function ToDo() {
   };
 
   return (
-    <div>
+    <div className="main">
       <InputComponent task={task}
         addTodo={addTodo}
         date={date}
@@ -93,12 +96,16 @@ function ToDo() {
         removeTodo={removeTodo}
         onTaskDragStart={handleTaskDragStart}
         onTaskDrop={handleTaskDrop}
-      />
 
+      />
+      
       <DoneList doneTasks={doneTasks}
         onTaskDragStart={handleTaskDragStart}
         onTaskDrop={handleTaskDrop}
-        removeTodo={removeTodo} />
+        removeTodo={removeTodo}
+
+         />
+
 
     </div>
   );
