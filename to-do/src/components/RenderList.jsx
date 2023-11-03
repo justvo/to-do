@@ -16,17 +16,21 @@ const RenderList = React.forwardRef((props, ref) => {
 
     >
       {taskList.map((todo, index) => (
-        <li key={index}
-          className="item-of-todo"
-          draggable
-          onDragStart={(e) => onTaskDragStart(e, doOrDone, index)}
-          onDragEnd={onTaskDragEnd}
-          onTouchStart={(e) => handleTouchStart(e, index, doOrDone, todo)}
-          onTouchMove={(e) => handleTouchMove(e)}
-          onTouchEnd={(e) => handleTouchEnd(e, index)}
-        >
-          {todo && todo.task} (Due: {todo && todo.date}){todo.power}
-          <button onClick={() => removeTodo(index, true)}>Remove</button>
+        <li>
+          <span
+            key={index}
+            className="item-of-todo"
+            draggable
+            onDragStart={(e) => onTaskDragStart(e, doOrDone, index)}
+            onDragEnd={onTaskDragEnd}
+            onTouchStart={(e) => handleTouchStart(e, index, doOrDone, todo)}
+            onTouchMove={(e) => handleTouchMove(e)}
+            onTouchEnd={(e) => handleTouchEnd(e, index)}>
+            {todo && todo.task} (Due: {todo && todo.date}){todo.power}
+          </span>
+          <button className="remove-button"
+            onClick={() => removeTodo(index,doOrDone)}
+          >Remove</button>
         </li>
       ))}
     </ul>

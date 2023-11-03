@@ -192,7 +192,7 @@ function ToDo() {
   };
 
   const removeTodo = (index, doOrDone) => {
-    if (doOrDone) {
+    if (doOrDone==="do") {
       const newTodos = doTasks.slice();
       newTodos.splice(index, 1);
       setDoTasks(newTodos);
