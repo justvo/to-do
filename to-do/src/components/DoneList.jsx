@@ -1,7 +1,9 @@
 import React from "react";
 
 import RenderList from "./RenderList";
-const DoneList = ({ doneTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop,handleTouchStart,handleTouchMove }) => {
+const DoneList = React.forwardRef((props,ref) => {
+  const{ doneTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop,
+    handleTouchStart,handleTouchMove,handleTouchEnd }=props;
   return (
     <div>
       <h1>Done</h1>
@@ -14,8 +16,10 @@ const DoneList = ({ doneTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTas
         onTaskDrop={onTaskDrop}
         handleTouchStart={handleTouchStart}
         handleTouchMove={handleTouchMove}
+        handleTouchEnd={handleTouchEnd}
+        ref={ref}
       />
     </div>
   )
-}
+})
 export default DoneList;

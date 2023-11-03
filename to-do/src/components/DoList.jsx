@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import RenderList from "./RenderList";
 
-const DoList = ({ doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop }) => {
+const DoList = React.forwardRef((props,ref) => {
+  const{ doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop,
+    handleTouchStart,handleTouchMove,handleTouchEnd }=props;
   const [filterDate, setFilterDate] = useState("");
   const [sortList, setSortList] = useState("");
   const [filteredTasks, setFilteredTasks] = useState(doTasks);
@@ -9,12 +11,11 @@ const DoList = ({ doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDro
   useEffect(() => {
     let filtered = [...doTasks];
 
-    // Фільтруємо за датою, якщо обрана фільтрація
+
     if (filterDate) {
       filtered = filtered.filter((task) => task.date === filterDate);
     }
 
-    // Сортуємо список, якщо обрано сортування
     if (sortList === "dateSort") {
       filtered = filtered.sort((a, b) => a.date.localeCompare(b.date));
     } else if (sortList === "importanceSort") {
@@ -47,10 +48,14 @@ const DoList = ({ doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDro
         onTaskDragEnd={onTaskDragEnd}
         onTaskDragStart={onTaskDragStart}
         onTaskDrop={onTaskDrop}
+        handleTouchEnd={handleTouchEnd}
+        handleTouchMove={handleTouchMove}
+        handleTouchStart={handleTouchStart}
+        ref={ref}
 
       />
     </div>
   );
-};
+})
 
 export default DoList;
