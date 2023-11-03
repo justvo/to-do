@@ -7,9 +7,6 @@ function ToDo() {
 
   const [doTasks, setDoTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
-
-
-
   const [task, setTask] = useState('');
   const [date, setDate] = useState('');
   const [power, setPower] = useState('');
@@ -25,17 +22,16 @@ function ToDo() {
     target: null,
     position: -1,
   });
-  disableScroll();
+  
 
   const handleTouchStart = (e, index, listType, item) => {
-
+    disableScroll();
     const touch = e.targetTouches[0];
     const startX = touch.pageX;
     const startY = touch.pageY;
     const element = e.target;
-
-
     const ghost = document.createElement("div");
+
     ghost.className = "ghost";
     ghost.style.width = element.offsetWidth + "px";
     ghost.style.height = element.offsetHeight + "px";
@@ -56,10 +52,14 @@ function ToDo() {
       position: index,
       listType,
     });
+
   };
 
   const handleTouchMove = (e) => {
+    
+    
     if (dragging.item) {
+
       const touch = e.targetTouches[0];
       const currentX = touch.pageX;
       const currentY = touch.pageY;
@@ -78,9 +78,11 @@ function ToDo() {
         position: -1,
       });
     }
+    
   };
 
   const handleTouchEnd = (e, index) => {
+    enableScroll();
     const dorect = document.querySelector('.do')
     const donerect = document.querySelector('.done')
     if (dragging.item) {
@@ -120,6 +122,7 @@ function ToDo() {
         listType: null,
       });
     }
+
   };
 
 
@@ -160,11 +163,11 @@ function ToDo() {
 
   function disableScroll() {
     document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+
   }
   function enableScroll() {
     document.body.style.overflow = 'auto';
-    document.documentElement.style.overflow = 'auto';
+
   }
 
 

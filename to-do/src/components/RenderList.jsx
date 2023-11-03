@@ -1,10 +1,12 @@
 import React from "react";
 import "./style/DoneList.css";
-const RenderList = React.forwardRef((props,ref) => {
+import "./style/DoList.css";
+import "./style/RenderList.css"
+const RenderList = React.forwardRef((props, ref) => {
   const { taskList, doOrDone, removeTodo, onTaskDragStart,
-    onTaskDragEnd, onTaskDrop,handleTouchStart,
-    handleTouchMove,handleTouchEnd }=props
-    
+    onTaskDragEnd, onTaskDrop, handleTouchStart,
+    handleTouchMove, handleTouchEnd } = props
+
   return (
     <ul
       className={doOrDone}
@@ -16,11 +18,12 @@ const RenderList = React.forwardRef((props,ref) => {
     >
       {taskList.map((todo, index) => (
         <li key={index}
+          className="item-of-todo"
           draggable
           onDragStart={(e) => onTaskDragStart(e, doOrDone, index)}
           onDragEnd={onTaskDragEnd}
-          onTouchStart={(e) => handleTouchStart(e, index,doOrDone,todo)}
-          onTouchMove={(e)=>handleTouchMove(e)}
+          onTouchStart={(e) => handleTouchStart(e, index, doOrDone, todo)}
+          onTouchMove={(e) => handleTouchMove(e)}
           onTouchEnd={(e) => handleTouchEnd(e, index)}
         >
           {todo && todo.task} (Due: {todo && todo.date}){todo.power}
