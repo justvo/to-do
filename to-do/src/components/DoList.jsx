@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import RenderList from "./RenderList";
 import "./style/DoList.css";
 
-const DoList = React.forwardRef((props,ref) => {
-  const{ doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop,
-    handleTouchStart,handleTouchMove,handleTouchEnd }=props;
+const DoList = React.forwardRef((props, ref) => {
+  const { doTasks, removeTodo, onTaskDragStart, onTaskDragEnd, onTaskDrop,
+    handleTouchStart, handleTouchMove, handleTouchEnd } = props;
   const [filterDate, setFilterDate] = useState("");
   const [sortList, setSortList] = useState("");
   const [filteredTasks, setFilteredTasks] = useState(doTasks);
@@ -27,21 +27,28 @@ const DoList = React.forwardRef((props,ref) => {
   }, [filterDate, sortList, doTasks]);
 
   return (
-    <div>
-        <h1>To do</h1>
-      <p>Filter by date</p>
-      <input
-        className="date-input"
-        type="date"
-        value={filterDate}
-        onChange={(e) => setFilterDate(e.target.value)}
-      />
-      <p>Sort by</p>
-      <select value={sortList} onChange={(e) => setSortList(e.target.value)}>
-        <option value="">Select sort</option>
-        <option value="dateSort">Date</option>
-        <option value="importanceSort">Importance</option>
-      </select>
+    <div className="do-container">
+      <h1>To do</h1>
+
+      <div className="filetr-input">
+        <div className="filter">
+
+        <p>Filter by date</p>
+        <input
+          className="do-and-filter"
+          type="date"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+          />
+        <p>Sort by</p>
+        <select value={sortList} onChange={(e) => setSortList(e.target.value)}>
+          <option value="">Select sort</option>
+          <option value="dateSort">Date</option>
+          <option value="importanceSort">Importance</option>
+        </select>
+          </div>
+
+
       <RenderList
         taskList={filteredTasks}
         doOrDone="do"
@@ -53,8 +60,9 @@ const DoList = React.forwardRef((props,ref) => {
         handleTouchMove={handleTouchMove}
         handleTouchStart={handleTouchStart}
         ref={ref}
-
-      />
+        
+        />
+        </div>
     </div>
   );
 })

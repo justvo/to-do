@@ -2,4 +2,23 @@
     background-color: rgb(132, 210, 30);
     width: 500px;
     height: 200px;
+
+}
+.do-container{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.do-and-filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.filter{
+    display: flex;
+    justify-content: end ;
+    align-items: center;
 }
