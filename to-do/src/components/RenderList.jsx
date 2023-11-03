@@ -1,6 +1,5 @@
 import React from "react";
-import "./style/DoneList.css";
-import "./style/DoList.css";
+
 import "./style/RenderList.css"
 const RenderList = React.forwardRef((props, ref) => {
   const { taskList, doOrDone, removeTodo, onTaskDragStart,

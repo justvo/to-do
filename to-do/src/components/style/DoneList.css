@@ -3,3 +3,9 @@
     width: 500px;
     height: 200px;
 }
+.done-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

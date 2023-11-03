@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import './InputComponent';
+import './style/ToDo.css'
 import InputComponent from "./InputComponent";
 import DoneList from "./DoneList";
 import DoList from "./DoList";
@@ -22,7 +23,7 @@ function ToDo() {
     target: null,
     position: -1,
   });
-  
+
 
   const handleTouchStart = (e, index, listType, item) => {
     disableScroll();
@@ -56,8 +57,8 @@ function ToDo() {
   };
 
   const handleTouchMove = (e) => {
-    
-    
+
+
     if (dragging.item) {
 
       const touch = e.targetTouches[0];
@@ -78,7 +79,7 @@ function ToDo() {
         position: -1,
       });
     }
-    
+
   };
 
   const handleTouchEnd = (e, index) => {
@@ -102,7 +103,7 @@ function ToDo() {
           return newTasks;
         });
         setDoneTasks((prevTasks) => [...prevTasks, taskToMove]);
-      } else if ((dragging.listType === 'done')&& (doarea.bottom > dragging.y)) {
+      } else if ((dragging.listType === 'done') && (doarea.bottom > dragging.y)) {
         const taskToMove = doneTasks[index];
         setDoneTasks((prevTasks) => {
           const newTasks = [...prevTasks];
@@ -212,30 +213,32 @@ function ToDo() {
         power={power}
         setPower={setPower}
       />
-
-      <DoList doTasks={doTasks}
-        removeTodo={removeTodo}
-        onTaskDragStart={handleTaskDragStart}
-        onTaskDrop={handleTaskDrop}
-        handleTouchEnd={handleTouchEnd}
-        handleTouchMove={handleTouchMove}
-        handleTouchStart={handleTouchStart}
-        ref={listRef}
+      <div className="lists">
 
 
-      />
+        <DoList doTasks={doTasks}
+          removeTodo={removeTodo}
+          onTaskDragStart={handleTaskDragStart}
+          onTaskDrop={handleTaskDrop}
+          handleTouchEnd={handleTouchEnd}
+          handleTouchMove={handleTouchMove}
+          handleTouchStart={handleTouchStart}
+          ref={listRef}
 
-      <DoneList doneTasks={doneTasks}
-        onTaskDragStart={handleTaskDragStart}
-        onTaskDrop={handleTaskDrop}
-        removeTodo={removeTodo}
-        handleTouchEnd={handleTouchEnd}
-        handleTouchMove={handleTouchMove}
-        handleTouchStart={handleTouchStart}
-        ref={listRef}
 
-      />
+        />
 
+        <DoneList doneTasks={doneTasks}
+          onTaskDragStart={handleTaskDragStart}
+          onTaskDrop={handleTaskDrop}
+          removeTodo={removeTodo}
+          handleTouchEnd={handleTouchEnd}
+          handleTouchMove={handleTouchMove}
+          handleTouchStart={handleTouchStart}
+          ref={listRef}
+
+        />
+      </div>
 
     </div>
   );
