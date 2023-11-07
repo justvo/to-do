@@ -7,28 +7,30 @@
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(to bottom right, rgb(0, 217, 255), rgb(0, 153, 255));
-    
+
 }
-.lists{
-    
+
+.lists {
+
     width: 80%;
     height: 90%;
-    overflow-x: auto; 
-    white-space: nowrap; 
+    overflow-x: auto;
+    white-space: nowrap;
 }
-.lists-content{
+
+.lists-content {
     margin: 0 auto;
     width: 600px;
     height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-   
+
 
 }
 
 @media (max-width: 368px) {
     .main {
-        width: 368px; 
+        width: 368px;
     }
 }
