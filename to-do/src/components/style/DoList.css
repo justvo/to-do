@@ -1,24 +1,35 @@
-.do{
-    background-color: rgb(132, 210, 30);
-    width: 300px;
-    height: 200px;
-
-}
 .do-container{
+    width: 50%;
+    height: 100%;
+    margin:5px ;
     display: flex;
-    flex:1;
     flex-direction: column;
+    align-items: initial;
     justify-content: space-between;
-    align-items: center;
 }
-.do-and-filter{
+.do{
+    white-space:normal;
+    width: 100%;
+    height: 90%;
+    background-color: blueviolet;
+    padding: 0;
+    margin-top: 0;
+}
+.filter-input{
+    height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .filter{
+    background-color: blueviolet;
     display: flex;
-    justify-content: end ;
+    height: 10%;
     align-items: center;
+}
+.title-lists{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 85px;
 }

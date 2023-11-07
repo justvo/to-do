@@ -1,9 +1,9 @@
 import React from "react";
 import './style/InputComponent.css'
-const InputComponent = ({ task, setTask, date, setDate, addTodo,power,setPower}) => {
+const InputComponent = ({ task, setTask, date, setDate, addTodo, power, setPower }) => {
 
     return (
-        <div>
+        <div className="input-container">
             <h1>Todo List</h1>
             <input
                 type="text"

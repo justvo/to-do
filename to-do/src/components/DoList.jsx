@@ -9,6 +9,8 @@ const DoList = React.forwardRef((props, ref) => {
   const [sortList, setSortList] = useState("");
   const [filteredTasks, setFilteredTasks] = useState(doTasks);
 
+
+
   useEffect(() => {
     let filtered = [...doTasks];
 
@@ -26,43 +28,49 @@ const DoList = React.forwardRef((props, ref) => {
     setFilteredTasks([...filtered]);
   }, [filterDate, sortList, doTasks]);
 
+  const resetFilter=()=>{
+    setFilterDate('');
+    setSortList('')
+
+  }
+
   return (
     <div className="do-container">
-      <h1>To do</h1>
+      <h1 className="title-lists">To do</h1>
 
-      <div className="filetr-input">
+      <div className="filter-input">
         <div className="filter">
 
-        <p>Filter by date</p>
-        <input
-          className="do-and-filter"
-          type="date"
-          value={filterDate}
-          onChange={(e) => setFilterDate(e.target.value)}
+          <p>Filter</p>
+          <input
+            className="do-and-filter"
+            type="date"
+            value={filterDate}
+            onChange={(e) => setFilterDate(e.target.value)}
           />
-        <p>Sort by</p>
-        <select value={sortList} onChange={(e) => setSortList(e.target.value)}>
-          <option value="">Select sort</option>
-          <option value="dateSort">Date</option>
-          <option value="importanceSort">Importance</option>
-        </select>
-          </div>
-
-
-      <RenderList
-        taskList={filteredTasks}
-        doOrDone="do"
-        removeTodo={removeTodo}
-        onTaskDragEnd={onTaskDragEnd}
-        onTaskDragStart={onTaskDragStart}
-        onTaskDrop={onTaskDrop}
-        handleTouchEnd={handleTouchEnd}
-        handleTouchMove={handleTouchMove}
-        handleTouchStart={handleTouchStart}
-        ref={ref}
-        
-        />
+          <select value={sortList} onChange={(e) => setSortList(e.target.value)}>
+            <option value="">Select sort by</option>
+            <option value="dateSort">Date</option>
+            <option value="importanceSort">Importance</option>
+          </select>
+          <button onClick={resetFilter} >Reset</button>
         </div>
+
+
+        <RenderList
+          taskList={filteredTasks}
+          doOrDone="do"
+          removeTodo={removeTodo}
+          onTaskDragEnd={onTaskDragEnd}
+          onTaskDragStart={onTaskDragStart}
+          onTaskDrop={onTaskDrop}
+          handleTouchEnd={handleTouchEnd}
+          handleTouchMove={handleTouchMove}
+          handleTouchStart={handleTouchStart}
+          ref={ref}
+
+        />
+      </div>
     </div>
   );
 })

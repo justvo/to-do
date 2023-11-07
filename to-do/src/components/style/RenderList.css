@@ -1,6 +1,5 @@
 .item-of-todo{
     touch-action: none;
-}
-.remove-button{
-    
+    width: 70%;
+    word-wrap: break-word;
 }

@@ -7,7 +7,7 @@ const DoneList = React.forwardRef((props,ref) => {
     handleTouchStart,handleTouchMove,handleTouchEnd }=props;
   return (
     <div className="done-container">
-      <h1>Done</h1>
+      <h1 className="title-lists">Done</h1>
       <RenderList
         taskList={doneTasks}
         doOrDone='done'

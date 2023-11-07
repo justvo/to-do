@@ -24,7 +24,12 @@ function ToDo() {
     position: -1,
   });
 
-
+  const currentDate = new Date();
+  currentDate.setUTCHours(0, 0, 0, 0);
+  const inputDateValue = date;
+  const inputDate = new Date(inputDateValue);
+  inputDate.setUTCHours(0, 0, 0, 0);
+  
   const handleTouchStart = (e, index, listType, item) => {
     disableScroll();
     const touch = e.targetTouches[0];
@@ -64,10 +69,7 @@ function ToDo() {
       const touch = e.targetTouches[0];
       const currentX = touch.pageX;
       const currentY = touch.pageY;
-
-
       const ghost = ghostRef.current;
-      // ghost.style.left = (dragging.x+ghost.style.width/2)+'px';
       ghost.style.left = (dragging.x) + 'px';
       ghost.style.top = dragging.y + 'px';
 
@@ -90,12 +92,10 @@ function ToDo() {
       const ghost = ghostRef.current;
       document.body.removeChild(ghost);
       ghostRef.current = null;
-      const ghostArea = ghost.getBoundingClientRect();
       const doarea = dorect.getBoundingClientRect();
       const donearea = donerect.getBoundingClientRect();
 
-
-      if ((dragging.listType === 'do') && (donearea.top < dragging.y)) {
+      if ((dragging.listType === 'do') && (donearea.left < dragging.x)) {
         const taskToMove = doTasks[index];
         setDoTasks((prevTasks) => {
           const newTasks = [...prevTasks];
@@ -103,7 +103,7 @@ function ToDo() {
           return newTasks;
         });
         setDoneTasks((prevTasks) => [...prevTasks, taskToMove]);
-      } else if ((dragging.listType === 'done') && (doarea.bottom > dragging.y)) {
+      } else if ((dragging.listType === 'done') && (doarea.right > dragging.x)) {
         const taskToMove = doneTasks[index];
         setDoneTasks((prevTasks) => {
           const newTasks = [...prevTasks];
@@ -125,15 +125,13 @@ function ToDo() {
     }
 
   };
-
+ 
 
 
   const handleTaskDragStart = (e, listType, taskIndex, todo) => {
     e.dataTransfer.setData('text/plain', JSON.stringify({ listType, taskIndex }));
     console.log(todo);
   };
-
-
 
   const handleTaskDrop = (e, targetList) => {
     e.preventDefault();
@@ -173,11 +171,7 @@ function ToDo() {
 
 
 
-  const currentDate = new Date();
-  currentDate.setUTCHours(0, 0, 0, 0);
-  const inputDateValue = date;
-  const inputDate = new Date(inputDateValue);
-  inputDate.setUTCHours(0, 0, 0, 0);
+
 
   const addTodo = () => {
 
@@ -214,6 +208,7 @@ function ToDo() {
         setPower={setPower}
       />
       <div className="lists">
+        <div className="lists-content">
 
 
         <DoList doTasks={doTasks}
@@ -224,7 +219,6 @@ function ToDo() {
           handleTouchMove={handleTouchMove}
           handleTouchStart={handleTouchStart}
           ref={listRef}
-
 
         />
 
@@ -238,6 +232,7 @@ function ToDo() {
           ref={listRef}
 
         />
+        </div>
       </div>
 
     </div>
