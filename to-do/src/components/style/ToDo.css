@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(to bottom right, rgb(0, 217, 255), rgb(0, 153, 255));
     
 }
 .lists{
@@ -22,11 +23,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+   
 
 }
 
 @media (max-width: 368px) {
     .main {
-        width: 368px; /* Фіксований розмір при ширині вікна більше 768px */
+        width: 368px; 
     }
 }
