@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+.input-container{
+    width: 60%;
+}
+.input-options-container{
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: space-between;
+}
+.main-titile {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    margin: 10px auto;
+    font-weight: 700;
+}
+
+.add-button,
+.select-input,
+.input-tasks,
+.date-input-block
+ {
+    margin-top: 15px;
+    min-width: 50px;
+    color: aliceblue;
+    height: 25px;
+    border: none;
+    border-radius: 45px;
+    background: #a88cb8;
+    box-shadow: -11px 11px 22px #7e698a,
+        11px -11px 22px #d2afe6;
+    transition: all 0.3s;
+
+}
+
+.date-input-block{
+    min-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-lable{
+    font-size: 12px;
+    
+}
+
+.date{
+    width: 80%;
+    background: #987fa7;
+    border: none;
+    color: aliceblue;
+    border-radius: 45px;
+
+}
+
+.input-tasks::placeholder {
+    color: aliceblue;
+    text-shadow: 2px 2px 4px rgba(201, 198, 198, 0.89);
+}
+
+
+.select-input:focus-visible,
+.input-tasks:focus-visible,
+.date-input-block:focus-visible {
+    outline: none;
+    transform: scale(1.4);
+    border-radius: 41px;
+    background: #bb9dcd;
+    box-shadow: -7px 7px 14px #a389b2,
+        7px -7px 14px #d3b1e8;
+}
+
+.date-input-block{
+    color: aliceblue;
+    text-shadow: 2px 2px 4px rgba(201, 198, 198, 0.89);
+}
+

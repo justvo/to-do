@@ -2,4 +2,7 @@
     touch-action: none;
     width: 70%;
     word-wrap: break-word;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -6,6 +6,18 @@ const RenderList = React.forwardRef((props, ref) => {
     onTaskDragEnd, onTaskDrop, handleTouchStart,
     handleTouchMove, handleTouchEnd } = props
 
+    const handleContextMenu = (e, index,doOrDone) => {
+      e.preventDefault();
+      const confirmed = window.confirm('Ви впевнені, що хочете видалити цей пункт?');
+      console.log(taskList)
+      // console.log(day);
+      if (confirmed) {
+        removeTodo(index,doOrDone)
+
+      }
+    };
+
+    
   return (
     <ul
       className={doOrDone}
@@ -20,13 +32,15 @@ const RenderList = React.forwardRef((props, ref) => {
           <span
             key={index}
             className="item-of-todo"
+            onContextMenu={(e) => handleContextMenu(e, index,doOrDone)}
             draggable
             onDragStart={(e) => onTaskDragStart(e, doOrDone, index)}
             onDragEnd={onTaskDragEnd}
             onTouchStart={(e) => handleTouchStart(e, index, doOrDone, todo)}
             onTouchMove={(e) => handleTouchMove(e)}
             onTouchEnd={(e) => handleTouchEnd(e, index)}>
-            {todo && todo.task} (Due: {todo && todo.date}){todo.power}
+              {}
+            <span className="name-tasks">{todo && todo.task}</span> <span className="due-date">(Due: {todo && todo.date})</span><span className="tasks-power">{todo.power}</span>
           </span>
           <button className="remove-button"
             onClick={() => removeTodo(index,doOrDone)}
