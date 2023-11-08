@@ -1,5 +1,5 @@
 .done-container {
-    width: 40%;
+    width: calc(38% - 10px);
     height: 100%;
     margin: 5px;
     display: flex;
@@ -19,6 +19,6 @@
     margin: 0;
     width: 100%;
     height: 90%;
-
+    box-sizing: border-box;
     padding: 10px 10px;
 }
