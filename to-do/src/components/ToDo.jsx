@@ -179,10 +179,11 @@ function ToDo() {
       alert('choose another date');
       return;
     }
-    if (task.trim() === '' || date.trim() === '') return;
+    if (task.trim() === '' || date.trim() === ''||power.trim ==='') return;
     setDoTasks([...doTasks, { task, date, power }]);
     setTask('');
     setDate('');
+    setPower('');
   };
 
   const removeTodo = (index, doOrDone) => {

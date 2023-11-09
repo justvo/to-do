@@ -10,7 +10,6 @@
 
 .done {
     list-style: none;
-    white-space: normal;
     border-radius: 42px;
     background: linear-gradient(225deg, #bb9ccc, #9e83ac);
     box-shadow:  -13px 13px 26px #8a7397,

@@ -43,17 +43,17 @@ const DoList = React.forwardRef((props, ref) => {
 
           <p>Filter</p>
           <input
-            className="do-and-filter"
+            className="date-filter"
             type="date"
             value={filterDate}
             onChange={(e) => setFilterDate(e.target.value)}
           />
-          <select value={sortList} onChange={(e) => setSortList(e.target.value)}>
+          <select className="filter-select" value={sortList} onChange={(e) => setSortList(e.target.value)}>
             <option value="">Select sort by</option>
             <option value="dateSort">Date</option>
             <option value="importanceSort">Importance</option>
           </select>
-          <button onClick={resetFilter} >Reset</button>
+          <button className="reset-button" onClick={resetFilter} >Reset</button>
         </div>
 
 

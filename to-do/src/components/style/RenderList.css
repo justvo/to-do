@@ -1,8 +1,46 @@
-.item-of-todo{
-    touch-action: none;
-    width: 70%;
-    word-wrap: break-word;
+.container-of-item {
+    height: 20%;
+}
+
+.item-of-todo {
+    margin: 15px 0 0 41px;
+    width: 80%;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
+    color: aliceblue;
+    font-weight: 700;
+    text-shadow: 0px 0px 4px rgba(201, 198, 198, 0.89);
+    justify-content: space-evenly;
+    touch-action: none;
     align-items: center;
+    border-radius: 4px;
+    background: #947ca2;
+    box-shadow: -5px 5px 22px #3b3241,
+        5px -5px 22px #edc6ff;
+}
+
+.name-tasks {
+    width: 30%;
+    margin-left: 5px;
+}
+
+.due-date {
+    width: 25%;
+}
+
+.tasks-power {
+    width: 10%;
+    text-align: center;
+}
+
+.remove-button {
+    margin-right: 10px;
+    width: 70px;
+    color: aliceblue;
+    border: none;
+    height: 70%;
+    border-radius: 43px;
+    background: linear-gradient(225deg, #9e85ad, #857092);
+    box-shadow: -5px 5px 12px #796685,
+        5px -5px 12px #af92bf;
 }
