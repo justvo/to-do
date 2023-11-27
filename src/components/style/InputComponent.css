@@ -65,7 +65,7 @@
 .input-tasks:focus-visible,
 .date-input-block:focus-visible {
     outline: none;
-    transform: scale(1.4);
+    transform: scale(1.1);
     border-radius: 41px;
     background: #bb9dcd;
     box-shadow: -7px 7px 14px #a389b2,
