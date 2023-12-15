@@ -1,6 +1,6 @@
 .do-container {
     width: calc(58% - 25px);
-    height: 100%;
+    height: 95%;
     margin: 5px 20px 5px 5px;
     display: flex;
     flex-direction: column;

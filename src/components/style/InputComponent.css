@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
-.input-container{
-    width: 60%;
+.input-container {
+    width: 800px;
 }
-.input-options-container{
+
+@media (max-width: 800px) {
+    .input-container {
+        width: 60%;
+    }
+}
+
+.input-options-container {
     display: flex;
-    flex-wrap:wrap ;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
+
 .main-titile {
     text-align: center;
     font-family: 'Dancing Script', cursive;
@@ -19,8 +27,7 @@
 .add-button,
 .select-input,
 .input-tasks,
-.date-input-block
- {
+.date-input-block {
     margin-top: 15px;
     min-width: 50px;
     color: aliceblue;
@@ -33,20 +40,23 @@
     transition: all 0.6s;
 
 }
+.input-tasks{
+    padding-left: 10px ;
+}
 
-.date-input-block{
+.date-input-block {
     min-width: 150px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.date-lable{
+.date-lable {
     font-size: 12px;
-    
+
 }
 
-.date{
+.date {
     width: 60%;
     background: #987fa7;
     border: none;
@@ -72,8 +82,7 @@
         7px -7px 14px #d3b1e8;
 }
 
-.date-input-block{
+.date-input-block {
     color: aliceblue;
     text-shadow: 2px 2px 4px rgba(201, 198, 198, 0.89);
 }
-

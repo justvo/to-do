@@ -4,6 +4,8 @@ import './style/ToDo.css'
 import InputComponent from "./InputComponent";
 import DoneList from "./DoneList";
 import DoList from "./DoList";
+import Alert from "./Alert";
+
 function ToDo() {
 
   const [doTasks, setDoTasks] = useState([]);
@@ -11,6 +13,8 @@ function ToDo() {
   const [task, setTask] = useState('');
   const [date, setDate] = useState('');
   const [power, setPower] = useState('');
+  const [Message, setMessage] = useState('');
+  const [alertVisibility, setAlertVisibility] = useState(false);
 
   const listRef = useRef(null);
   const ghostRef = useRef(null);
@@ -29,6 +33,7 @@ function ToDo() {
   const inputDateValue = date;
   const inputDate = new Date(inputDateValue);
   inputDate.setUTCHours(0, 0, 0, 0);
+ 
   
   const handleTouchStart = (e, index, listType, item) => {
     disableScroll();
@@ -176,15 +181,25 @@ function ToDo() {
   const addTodo = () => {
 
     if (inputDate < currentDate) {
-      alert('choose another date');
+      setMessage('The task completion date cannot be in the past');
+      setAlertVisibility(true);
       return;
     }
-    if (task.trim() === '' || date.trim() === ''||power.trim ==='') return;
+    if (task.trim() === '' || date.trim() === ''|| power.trim ===''){
+      setMessage('You must specify the name of the task, select the time when the task should be completed and the priority of the task');
+      setAlertVisibility(true);
+      return;
+    } 
+
     setDoTasks([...doTasks, { task, date, power }]);
     setTask('');
     setDate('');
     setPower('');
   };
+
+  const confirmAlert = ()=>{
+    setAlertVisibility(false);
+  }
 
   const removeTodo = (index, doOrDone) => {
     if (doOrDone==="do") {
@@ -235,7 +250,7 @@ function ToDo() {
         />
         </div>
       </div>
-
+      <Alert Confirm={confirmAlert} ErrMessage={Message} Visible={alertVisibility}/>
     </div>
   );
 }
